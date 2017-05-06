@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+clang -Ofast -Wall -Wextra -Werror -pedantic -lcurses term-size.c -o term-size
