@@ -6,7 +6,7 @@
 #include <sys/ioctl.h> // ioctl()
 
 int main() {
-	int tty_fd = open("/dev/tty", O_RDONLY);
+	int tty_fd = open("/dev/tty", O_EVTONLY | O_NONBLOCK);
 	if (tty_fd == -1) {
 		fprintf(stderr, "Opening `/dev/tty` failed (%d): %s\n", errno, strerror(errno));
 		return 1;
