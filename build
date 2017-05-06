@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 
-clang -Ofast -Wall -Wextra -Werror -pedantic -lcurses term-size.c -o term-size
+clang -Ofast -Wall -Wextra -Werror -pedantic -std=c99 term-size.c -o term-size
