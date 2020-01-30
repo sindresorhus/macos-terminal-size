@@ -1,3 +1,18 @@
 #!/usr/bin/env sh
 
+set -e
+set -x
+
 clang -Ofast -Wall -Wextra -Werror -pedantic -std=c99 term-size.c -o term-size
+
+# $SIGN should be the signing identity whose key is available in the keychain,
+# e.g. "Node.js Foundation"
+if [ "X$SIGN" == "X" ]; then
+  echo "No SIGN environment varriable, skipping codesign" >&2
+else
+  codesign \
+    --sign "$SIGN" \
+    --options runtime \
+    --timestamp \
+    term-size
+fi
