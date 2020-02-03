@@ -6,13 +6,13 @@ set -x
 clang -Ofast -Wall -Wextra -Werror -pedantic -std=c99 term-size.c -o term-size
 
 # $CODE_SIGN_IDENTITY should be the signing identity whose key is available in
-# the keychain, e.g. "Node.js Foundation"
+# the keychain. For example, `Node.js Foundation`.
 if [[ -n $CODE_SIGN_IDENTITY ]]; then
-  echo "No CODE_SIGN_IDENTITY environment variable, skipping codesign" >&2
+	echo "No CODE_SIGN_IDENTITY environment variable, skipping codesigning" >&2
 else
-  codesign \
-    --sign "$CODE_SIGN_IDENTITY" \
-    --options runtime \
-    --timestamp \
-    term-size
+	codesign \
+		--sign "$CODE_SIGN_IDENTITY" \
+		--options runtime \
+		--timestamp \
+		term-size
 fi
