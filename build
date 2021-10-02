@@ -3,7 +3,7 @@
 set -e
 set -x
 
-clang -Ofast -Wall -Wextra -Werror -pedantic -std=c99 term-size.c -o term-size
+clang -Ofast -Wall -Wextra -Werror -pedantic -std=c99 -arch arm64 -arch x86_64 term-size.c -o term-size
 
 # $CODE_SIGN_IDENTITY should be the signing identity whose key is available in
 # the keychain. For example, `Node.js Foundation`.
